@@ -17,12 +17,24 @@
     <nav>
         <div class="nav-container">
             <h1 class="logo">Tacos El Arquitecto</h1>
-            <ul class="nav-links">
+
+            <!-- Mobile Hamburger -->
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <!-- Navigation Links -->
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Inicio</a></li>
                 <li><a href="#menu">Menú</a></li>
                 <li><a href="#about">Nosotros</a></li>
                 <li><a href="#contact">Contacto</a></li>
             </ul>
+
+            <!-- CTA Button in Nav -->
+            <a href="#menu" class="nav-cta">Ver Menú</a>
         </div>
     </nav>
 
@@ -96,5 +108,24 @@
         <p>&copy; 2025 Tacos El Arquitecto. Hecho con ❤️ en CDMX</p>
         <p>Sitio creado por Edgar Herrera - Web Developer</p>
     </footer>
+
+    <!-- JavaScript for Mobile Menu -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
