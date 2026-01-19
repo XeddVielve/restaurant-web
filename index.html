@@ -17,33 +17,44 @@
     <nav>
         <div class="nav-container">
             <h1 class="logo">Tacos El Arquitecto</h1>
-
-            <!-- Mobile Hamburger -->
-            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-
-            <!-- Navigation Links -->
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home">Inicio</a></li>
-                <li><a href="#menu">Menú</a></li>
-                <li><a href="#about">Nosotros</a></li>
-                <li><a href="#contact">Contacto</a></li>
-            </ul>
-
-            <!-- CTA Button in Nav -->
             <a href="#menu" class="nav-cta">Ver Menú</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <!-- Food Carousel -->
+        <div class="hero-food-carousel">
+            <div class="food-slider">
+                <div class="food-item active">
+                    <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=800&h=800&fit=crop&auto=format&q=80" alt="Tacos al Pastor" class="food-image">
+                </div>
+                <div class="food-item">
+                    <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800&h=800&fit=crop&auto=format&q=80" alt="Tacos de Asada" class="food-image">
+                </div>
+                <div class="food-item">
+                    <img src="https://images.unsplash.com/photo-1613514785940-daed07799d11?w=800&h=800&fit=crop&auto=format&q=80" alt="Quesadillas" class="food-image">
+                </div>
+            </div>
+
+            <!-- Carousel Controls -->
+            <button class="carousel-btn prev" id="prevBtn">‹</button>
+            <button class="carousel-btn next" id="nextBtn">›</button>
+
+            <!-- Carousel Indicators -->
+            <div class="carousel-indicators">
+                <span class="indicator active" data-slide="0"></span>
+                <span class="indicator" data-slide="1"></span>
+                <span class="indicator" data-slide="2"></span>
+            </div>
+        </div>
+
+        <!-- Hero Content -->
         <div class="hero-content">
             <h1>Los Mejores Tacos de la CDMX</h1>
-            <p>Auténticos tacos al pastor hechos con pasión</p>
-            <a href="#menu" class="btn">Ver Menú</a>
+            <p class="hero-description">Sumérgete en una experiencia única de sabor auténtico mexicano. Nuestros tacos al pastor, marinados durante 24 horas con especias tradicionales y cocinados al trompo, te transportarán a las calles de la Ciudad de México.</p>
+            <p class="hero-subtext">Ingredientes frescos • Receta familiar • Sabor inigualable</p>
+            <a href="#menu" class="btn">Explorar Menú</a>
         </div>
     </section>
 
@@ -109,23 +120,72 @@
         <p>Sitio creado por Edgar Herrera - Web Developer</p>
     </footer>
 
-    <!-- JavaScript for Mobile Menu -->
+    <!-- JavaScript for Food Carousel -->
     <script>
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
+        // Carousel functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.food-item');
+        const indicators = document.querySelectorAll('.indicator');
+        const totalSlides = slides.length;
 
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
+        function showSlide(index) {
+            // Remove active class from all slides and indicators
+            slides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(indicator => indicator.classList.remove('active'));
 
-        // Close menu when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
+            // Add active class to current slide and indicator
+            slides[index].classList.add('active');
+            indicators[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        // Event listeners for buttons
+        document.getElementById('nextBtn').addEventListener('click', nextSlide);
+        document.getElementById('prevBtn').addEventListener('click', prevSlide);
+
+        // Event listeners for indicators
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
             });
         });
+
+        // Auto-advance carousel every 4 seconds
+        setInterval(nextSlide, 4000);
+
+        // Swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        const carousel = document.querySelector('.hero-food-carousel');
+
+        carousel.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        carousel.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                nextSlide();
+            }
+            if (touchEndX > touchStartX + 50) {
+                prevSlide();
+            }
+        }
     </script>
 </body>
 </html>

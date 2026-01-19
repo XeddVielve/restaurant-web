@@ -153,17 +153,16 @@
 
      li { margin-bottom: var(--space-xs); }
 
-     /*PART 6: NAVIGATION (DESKTOP-FIRST)*/
+     /*PART 6: NAVIGATION (MINIMALIST DESIGN)*/
      nav {
-     background: rgba(0, 0, 0, 0.95);
-     backdrop-filter: blur(10px);
+     background: rgba(0, 0, 0, 0.85);
+     backdrop-filter: blur(20px);
      color: rgb(255, 255, 255);
      padding: 1rem 2rem;
      position: sticky;
      top: 0;
      z-index: 1000;
-     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-     border-bottom: 3px solid #fd7702;
+     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
      }
 
      .nav-container {
@@ -172,206 +171,226 @@
      padding: 0 1rem;
      display: flex;
      flex-direction: row;
-     justify-content: space-between;
+     justify-content: flex-start;
      align-items: center;
      gap: 2rem;
      }
 
      .logo {
-     font-size: 2rem;
+     font-size: 1.8rem;
      color: #fd7702;
      font-weight: var(--weight-extrabold);
      font-family: 'Poppins', sans-serif;
      margin: 0;
      white-space: nowrap;
-     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
      }
 
-     /* Hamburger Menu - Hidden on Desktop */
-     .hamburger {
-     display: none;
-     flex-direction: column;
-     background: transparent;
-     border: none;
-     cursor: pointer;
-     padding: 0.5rem;
-     z-index: 1001;
-     }
-
-     .hamburger .bar {
-     width: 25px;
-     height: 3px;
-     background-color: #fd7702;
-     margin: 3px 0;
-     transition: all 0.3s ease;
-     border-radius: 3px;
-     }
-
-     .hamburger.active .bar:nth-child(1) {
-     transform: rotate(-45deg) translate(-5px, 6px);
-     }
-
-     .hamburger.active .bar:nth-child(2) {
-     opacity: 0;
-     }
-
-     .hamburger.active .bar:nth-child(3) {
-     transform: rotate(45deg) translate(-5px, -6px);
-     }
-
-     .nav-links {
-     display: flex;
-     flex-direction: row;
-     list-style: none;
-     gap: 2rem;
-     font-size: 1.1rem;
-     text-align: center;
-     margin: 0;
-     padding: 0;
-     }
-
-     .nav-links a {
-     color: white;
-     text-decoration: none;
-     font-weight: var(--weight-medium);
-     transition: all 0.3s ease;
-     position: relative;
-     padding: 0.5rem 0;
-     }
-
-     .nav-links a::after {
-     content: '';
-     position: absolute;
-     bottom: 0;
-     left: 0;
-     width: 0;
-     height: 2px;
-     background: linear-gradient(90deg, #006847, #FFFFFF, #CE1126);
-     transition: width 0.3s ease;
-     }
-
-     .nav-links a:hover::after {
-     width: 100%;
-     }
-
-     .nav-links a:hover {
-     color: #fd7702;
-     transform: translateY(-2px);
-     }
-
-     /* CTA Button in Nav */
+     /* CTA Button in Nav - Close to Logo */
      .nav-cta {
      display: inline-block;
-     background: linear-gradient(135deg, #006847 0%, #FFFFFF 50%, #CE1126 100%);
+     background: linear-gradient(90deg, #006847 0%, #FFFFFF 50%, #CE1126 100%);
      color: #000000;
-     padding: 0.75rem 1.5rem;
+     padding: 0.65rem 1.75rem;
      text-decoration: none;
      border-radius: 50px;
-     font-size: 1rem;
+     font-size: 0.95rem;
      font-weight: var(--weight-bold);
      transition: all 0.3s ease;
-     box-shadow: 0 4px 15px rgba(253, 119, 2, 0.4);
-     border: 2px solid #fd7702;
+     box-shadow: 0 3px 12px rgba(253, 119, 2, 0.3);
+     border: 2px solid rgba(253, 119, 2, 0.4);
      white-space: nowrap;
      }
 
      .nav-cta:hover {
-     transform: translateY(-3px) scale(1.05);
-     box-shadow: 0 6px 25px rgba(253, 119, 2, 0.6);
-     background: linear-gradient(135deg, #CE1126 0%, #FFFFFF 50%, #006847 100%);
+     transform: translateY(-2px);
+     box-shadow: 0 5px 20px rgba(253, 119, 2, 0.5);
+     background: linear-gradient(90deg, #CE1126 0%, #FFFFFF 50%, #006847 100%);
      }
     
-     /*PART 7: HERO SECTION (DESKTOP-FIRST)*/
+     /*PART 7: HERO SECTION (FOOD SHOWCASE)*/
      .hero {
-     background: linear-gradient(120deg,
-                 #006847 0%,           /* Green start */
-                 #00A86B 25%,          /* Lighter green */
-                 #FFFFFF 50%,          /* White middle */
-                 #FF6B8A 75%,          /* Light red */
-                 #CE1126 100%          /* Red end */
-                 ),
-                 url('https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=1920&q=80') center/cover;
-     background-blend-mode: overlay;
-     min-height: 85vh;
+     background: linear-gradient(135deg,
+                 #006847 0%,
+                 #00844a 20%,
+                 #e8f5e9 40%,
+                 #ffffff 50%,
+                 #ffe0e0 60%,
+                 #d32f2f 80%,
+                 #CE1126 100%
+                 );
+     min-height: 90vh;
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     align-items: center;
+     gap: 4rem;
+     padding: 3rem 5%;
+     position: relative;
+     overflow: hidden;
+     }
+
+     /* Food Carousel Section */
+     .hero-food-carousel {
+     position: relative;
+     width: 100%;
+     max-width: 600px;
+     height: 600px;
      display: flex;
      align-items: center;
      justify-content: center;
-     text-align: center;
-     padding: 4rem 2rem;
-     position: relative;
-     overflow: hidden;
-     animation: fadeIn 1s ease-out;
+     margin: 0 auto;
      }
 
-     /* Add subtle pattern overlay */
-     .hero::before {
-     content: '';
+     .food-slider {
+     position: relative;
+     width: 100%;
+     height: 100%;
+     }
+
+     .food-item {
      position: absolute;
      top: 0;
      left: 0;
-     right: 0;
-     bottom: 0;
-     background-image:
-         repeating-linear-gradient(45deg,
-             transparent,
-             transparent 20px,
-             rgba(255, 255, 255, 0.03) 20px,
-             rgba(255, 255, 255, 0.03) 40px
-         );
+     width: 100%;
+     height: 100%;
+     opacity: 0;
+     transform: scale(0.8) translateX(-100px);
+     transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
      pointer-events: none;
-     z-index: 1;
      }
 
+     .food-item.active {
+     opacity: 1;
+     transform: scale(1) translateX(0);
+     pointer-events: all;
+     animation: float 3s ease-in-out infinite;
+     }
+
+     .food-image {
+     width: 100%;
+     height: 100%;
+     object-fit: contain;
+     filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4));
+     }
+
+     /* Carousel Controls */
+     .carousel-btn {
+     position: absolute;
+     top: 50%;
+     transform: translateY(-50%);
+     background: rgba(253, 119, 2, 0.9);
+     color: white;
+     border: none;
+     width: 50px;
+     height: 50px;
+     border-radius: 50%;
+     font-size: 2rem;
+     cursor: pointer;
+     transition: all 0.3s ease;
+     z-index: 10;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+     }
+
+     .carousel-btn:hover {
+     background: rgba(206, 17, 38, 0.95);
+     transform: translateY(-50%) scale(1.1);
+     }
+
+     .carousel-btn.prev {
+     left: -25px;
+     }
+
+     .carousel-btn.next {
+     right: -25px;
+     }
+
+     /* Carousel Indicators */
+     .carousel-indicators {
+     position: absolute;
+     bottom: -50px;
+     left: 50%;
+     transform: translateX(-50%);
+     display: flex;
+     gap: 12px;
+     }
+
+     .indicator {
+     width: 12px;
+     height: 12px;
+     border-radius: 50%;
+     background: rgba(0, 0, 0, 0.3);
+     cursor: pointer;
+     transition: all 0.3s ease;
+     }
+
+     .indicator.active {
+     background: #fd7702;
+     width: 30px;
+     border-radius: 6px;
+     }
+
+     /* Hero Content Section */
      .hero-content {
      position: relative;
      z-index: 2;
-     max-width: 800px;
-     margin: 0 auto;
-     background: rgba(0, 0, 0, 0.7);
-     padding: 3rem 2.5rem;
-     border-radius: 20px;
-     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-     backdrop-filter: blur(15px);
-     border: 2px solid rgba(253, 119, 2, 0.3);
+     padding: 2rem;
+     text-align: left;
      }
 
      .hero-content h1 {
      font-size: 3.5rem;
      margin-bottom: 1.5rem;
-     text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.9);
-     color: #FFFFFF;
-     line-height: 1.2;
+     color: #1a1a1a;
+     line-height: 1.1;
      font-weight: var(--weight-extrabold);
      }
 
-     .hero-content p {
-     font-size: 1.5rem;
+     .hero-description {
+     font-size: 1.2rem;
+     margin-bottom: 1rem;
+     color: #2c2c2c;
+     line-height: 1.7;
+     font-weight: var(--weight-normal);
+     }
+
+     .hero-subtext {
+     font-size: 1rem;
      margin-bottom: 2rem;
-     color: #FFFFFF;
-     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+     color: #555;
      font-weight: var(--weight-medium);
+     font-style: italic;
      }
 
      .btn {
      display: inline-block;
-     background: linear-gradient(135deg, #006847 0%, #FFFFFF 50%, #CE1126 100%);
+     background: linear-gradient(90deg, #006847 0%, #FFFFFF 50%, #CE1126 100%);
      color: #000000;
-     padding: 1.25rem 2.5rem;
+     padding: 1.2rem 3rem;
      text-decoration: none;
      border-radius: 50px;
-     font-size: 1.2rem;
+     font-size: 1.1rem;
      font-weight: var(--weight-bold);
-     position: relative;
-     overflow: hidden;
      transition: all 0.3s ease;
-     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
      border: 3px solid #fd7702;
      }
 
      .btn:hover {
-     transform: translateY(-5px) scale(1.05);
-     box-shadow: 0 12px 35px rgba(253, 119, 2, 0.7);
-     background: linear-gradient(135deg, #CE1126 0%, #FFFFFF 50%, #006847 100%);
+     transform: translateY(-3px);
+     box-shadow: 0 10px 30px rgba(253, 119, 2, 0.5);
+     background: linear-gradient(90deg, #CE1126 0%, #FFFFFF 50%, #006847 100%);
+     }
+
+     /* Float Animation */
+     @keyframes float {
+     0%, 100% {
+         transform: scale(1) translateY(0);
+     }
+     50% {
+         transform: scale(1) translateY(-20px);
+     }
      }
 
      /*PART 8: FEATURES SECTION (MOBILE-FIRST)*/
@@ -509,79 +528,71 @@
      }
 
      .nav-container {
-     flex-wrap: wrap;
      gap: 1rem;
+     justify-content: space-between;
      }
 
      .logo {
+     font-size: 1.3rem;
+     }
+
+     .nav-cta {
+     padding: 0.5rem 1.2rem;
+     font-size: 0.85rem;
+     }
+
+     /* Mobile Hero - Stack Layout */
+     .hero {
+     grid-template-columns: 1fr;
+     min-height: auto;
+     padding: 3rem 1.5rem;
+     gap: 2rem;
+     }
+
+     .hero-food-carousel {
+     max-width: 400px;
+     height: 400px;
+     order: 1;
+     }
+
+     .carousel-btn {
+     width: 40px;
+     height: 40px;
      font-size: 1.5rem;
      }
 
-     /* Show Hamburger on Mobile */
-     .hamburger {
-     display: flex;
-     order: 3;
-     margin-left: auto;
+     .carousel-btn.prev {
+     left: -15px;
      }
 
-     /* Hide Nav CTA on Mobile */
-     .nav-cta {
-     display: none;
+     .carousel-btn.next {
+     right: -15px;
      }
 
-     /* Mobile Menu Dropdown */
-     .nav-links {
-     position: fixed;
-     top: 70px;
-     left: -100%;
-     width: 100%;
-     flex-direction: column;
-     background: rgba(0, 0, 0, 0.98);
-     backdrop-filter: blur(10px);
-     padding: 2rem 1rem;
-     gap: 1.5rem;
-     transition: left 0.3s ease;
-     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-     border-bottom: 3px solid #fd7702;
-     z-index: 999;
-     }
-
-     .nav-links.active {
-     left: 0;
-     }
-
-     .nav-links li {
-     width: 100%;
-     text-align: center;
-     }
-
-     .nav-links a {
-     display: block;
-     padding: 1rem;
-     font-size: 1.2rem;
-     border-bottom: 1px solid rgba(253, 119, 2, 0.2);
-     }
-
-     /* Mobile Hero */
-     .hero {
-     min-height: 70vh;
-     padding: 2rem 1rem;
+     .carousel-indicators {
+     bottom: -40px;
      }
 
      .hero-content {
-     padding: 2rem 1.5rem;
+     order: 2;
+     text-align: center;
+     padding: 1rem;
      }
 
      .hero-content h1 {
-     font-size: 2rem;
+     font-size: 2.2rem;
      }
 
-     .hero-content p {
-     font-size: 1.1rem;
+     .hero-description {
+     font-size: 1rem;
+     }
+
+     .hero-subtext {
+     font-size: 0.9rem;
      }
 
      .btn {
-     padding: 1rem 1.5rem;
+     padding: 1rem 2rem;
      font-size: 1rem;
      }
      }
@@ -592,39 +603,46 @@
 
      /* Navigation */
      .nav-container {
-     flex-direction: row;  /* Side by side */
-     justify-content: space-between;
      padding: 0 2rem;
      }
-    
-     .logo { 
-     font-size: 2rem;
+
+     .logo {
+     font-size: 1.6rem;
      }
-    
-     .nav-links {
-     flex-direction: row;  /* Horizontal */
-     gap: 2rem;
-     font-size: 1.2rem;
-     width: auto;
+
+     .nav-cta {
+     padding: 0.6rem 1.5rem;
+     font-size: 0.9rem;
      }
-    
-     /* Hero */
+
+     /* Hero - Side by Side but Smaller */
      .hero {
-        min-height: 70vh;
-        padding: 3rem 2rem;
+        grid-template-columns: 1fr 1fr;
+        min-height: 75vh;
+        padding: 3rem 3%;
+        gap: 2rem;
      }
-    
+
+     .hero-food-carousel {
+        max-width: 450px;
+        height: 450px;
+     }
+
      .hero-content h1 {
-        font-size: 3rem;  /* 48px */
+        font-size: 2.5rem;
      }
-    
-     .hero-content p {
-        font-size: 1.25rem;
+
+     .hero-description {
+        font-size: 1.1rem;
      }
-    
+
+     .hero-subtext {
+        font-size: 0.95rem;
+     }
+
      .btn {
-     padding: 1rem 2rem;
-     font-size: 1.1rem;
+     padding: 1.1rem 2.5rem;
+     font-size: 1.05rem;
      }
     
      /* Features */
@@ -683,34 +701,45 @@
 
      /* PART 13: DESKTOP ENHANCEMENTS (1024px+)*/
      @media (min-width: 1024px) {
-        
+
      /* Navigation */
      .logo {
-     font-size: 2.5rem;
+     font-size: 1.8rem;
      }
-    
-     .nav-links { 
-     font-size: 1.3rem;
-     gap: 2.5rem;
+
+     .nav-cta {
+     padding: 0.65rem 1.75rem;
+     font-size: 0.95rem;
      }
-    
-     /* Hero */
+
+     /* Hero - Full Desktop Layout */
      .hero {
-     min-height: 80vh;
-     padding: 4rem 2rem;
+     grid-template-columns: 1fr 1fr;
+     min-height: 90vh;
+     padding: 3rem 5%;
+     gap: 4rem;
      }
-    
+
+     .hero-food-carousel {
+     max-width: 600px;
+     height: 600px;
+     }
+
      .hero-content h1 {
-     font-size: 4rem;  /* 64px - BIG on desktop! */
+     font-size: 3.5rem;
      }
-    
-     .hero-content p {
-     font-size: 1.5rem;
+
+     .hero-description {
+     font-size: 1.2rem;
      }
-    
+
+     .hero-subtext {
+     font-size: 1rem;
+     }
+
      .btn {
-        padding: 1rem 2rem;
-        font-size: 1.2rem;
+        padding: 1.2rem 3rem;
+        font-size: 1.1rem;
      }
     
      /* Features */
