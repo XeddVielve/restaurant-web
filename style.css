@@ -240,10 +240,10 @@
      /* Centered Hero Title */
      .hero-title {
      font-size: clamp(2rem, 4vw, 3rem);
-     margin-bottom: 1.5rem;
-     color: #ffffff;
+     margin-bottom: 10rem; 
+     color: #e8ad30;
      font-family: 'Rye', cursive;
-     font-weight: 400;
+     font-weight: 300;
      letter-spacing: 3px;
      text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.8),
                   0 0 30px rgba(253, 119, 2, 0.6);
@@ -421,7 +421,6 @@
      margin-top: clamp(0.5rem, 1vw, 0.7rem);
      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
      }
-
 
      /* General Button Styles (for other sections) */
      .btn {
