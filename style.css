@@ -198,14 +198,14 @@
      font-size: 0.95rem;
      font-weight: var(--weight-bold);
      transition: all 0.3s ease;
-     box-shadow: 0 3px 12px rgba(253, 119, 2, 0.3);
-     border: 2px solid rgba(253, 119, 2, 0.4);
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+     border: none;
      white-space: nowrap;
      }
 
      .nav-cta:hover {
      transform: translateY(-2px);
-     box-shadow: 0 5px 20px rgba(0, 255, 47, 0.5);
+     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
      background: linear-gradient(90deg, #CE1126 0%, #FFFFFF 50%, #006847 100%);
      }
     
@@ -222,9 +222,26 @@
              rgba(206, 17, 38, 0.75) 100%
          ),
          url('../Downloads/julieta-julieta-bwwOu1GOXnk-unsplash.jpg');
-         
-     background-position: 50% 10%;  
-     background-attachment:scroll;
+
+     /* BACKGROUND POSITIONING GUIDE:
+        - First value (50%) = Horizontal position (0% = left, 50% = center, 100% = right)
+        - Second value (10%) = Vertical position (0% = top, 50% = center, 100% = bottom)
+        - You can also use: top, center, bottom, left, right
+        - Examples: "center top", "left center", "80% 20%"
+     */
+     background-position: 50% 10%;
+
+     /* BACKGROUND ATTACHMENT:
+        - scroll = image moves when you scroll (normal)
+        - fixed = image stays in place (parallax effect)
+     */
+     background-attachment: scroll;
+
+     /* BACKGROUND SIZE:
+        - cover = fills entire area (may crop image)
+        - contain = fits whole image (may show empty space)
+        - 100% 100% = stretches to fill
+     */
      background-size: cover;
      min-height: 50vh;
      max-height: 50vh;
@@ -572,26 +589,26 @@
 
      /*PART 11.5: MOBILE STYLES (max-width: 767px)*/
      @media (max-width: 767px) {
-     /* Mobile Navigation */
+     /* Mobile Navigation - Shorter */
      nav {
-     padding: 1rem;
+     padding: 0.4rem 1rem;
      }
 
      .nav-container {
-     gap: 1.5rem;
+     gap: 1rem;
      justify-content: center;
      flex-wrap: wrap;
-     padding: 0 1rem;
+     padding: 0 0.5rem;
      }
 
      .logo {
-     font-size: 1.5rem;
+     font-size: 1.3rem;
      letter-spacing: 1px;
      }
 
      .nav-cta {
-     padding: 0.5rem 1.2rem;
-     font-size: 0.85rem;
+     padding: 0.4rem 1rem;
+     font-size: 0.8rem;
      }
 
      /* Mobile Hero - Stack Layout */
@@ -615,7 +632,7 @@
      .hero-food-carousel {
      max-width: 300px;
      height: 300px;
-     padding-bottom: 50px;
+     padding-bottom: 35px;
      order: 1;
      }
 
@@ -634,7 +651,7 @@
      }
 
      .carousel-indicators {
-     bottom: -40px;
+     bottom: -25px;
      gap: 6px;
      }
 
@@ -667,7 +684,7 @@
      }
      }
 
-     /*PART 12: TABLET ENHANCEMENTS (768px+)*/
+     /*PART 12: TABLET/IPAD ENHANCEMENTS (768px+)*/
 
      @media (min-width: 768px) {
 
@@ -675,6 +692,7 @@
      .nav-container {
      padding: 0 2rem;
      justify-content: center;
+     align-items: center;
      gap: 2.5rem;
      }
 
@@ -687,32 +705,41 @@
      font-size: 0.9rem;
      }
 
-     /* Hero - Tablet Layout */
+     /* Hero - Tablet/iPad Layout */
      .hero {
         min-height: 100vh;
         max-height: 100vh;
-        padding: 2rem 3% 3rem;
+        padding: 2rem 4% 3rem;
+        justify-content: center;
      }
 
      .hero-title {
         font-size: 2.8rem;
         margin-bottom: 2rem;
         letter-spacing: 3px;
+        text-align: center;
      }
 
      .hero-container {
         grid-template-columns: 45% 55%;
         gap: 2.5rem;
+        justify-items: center;
+        align-items: center;
      }
 
      .hero-food-carousel {
         max-width: 350px;
         height: 350px;
-        padding-bottom: 50px;
+        padding-bottom: 40px;
      }
 
      .carousel-indicators {
-        bottom: -40px;
+        bottom: -30px;
+     }
+
+     .hero-content {
+        width: 100%;
+        max-width: 100%;
      }
 
      .family-subtitle {
