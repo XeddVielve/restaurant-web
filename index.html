@@ -157,14 +157,27 @@
     <script>
         // Carousel functionality
         let currentSlide = 0;
+        let direction = 'right';
         const slides = document.querySelectorAll('.food-item');
         const indicators = document.querySelectorAll('.indicator');
         const totalSlides = slides.length;
 
-        function showSlide(index) {
-            // Remove active class from all slides and indicators
-            slides.forEach(slide => slide.classList.remove('active'));
+        function showSlide(index, slideDirection) {
+            // Remove all classes from slides
+            slides.forEach(slide => {
+                slide.classList.remove('active', 'slide-left', 'slide-right');
+            });
             indicators.forEach(indicator => indicator.classList.remove('active'));
+
+            // Set slide direction
+            if (slideDirection === 'left') {
+                slides[index].classList.add('slide-left');
+            } else {
+                slides[index].classList.add('slide-right');
+            }
+
+            // Trigger reflow
+            void slides[index].offsetWidth;
 
             // Add active class to current slide and indicator
             slides[index].classList.add('active');
@@ -172,13 +185,17 @@
         }
 
         function nextSlide() {
+            const prevIndex = currentSlide;
             currentSlide = (currentSlide + 1) % totalSlides;
-            showSlide(currentSlide);
+            slides[prevIndex].classList.add('slide-left');
+            showSlide(currentSlide, 'right');
         }
 
         function prevSlide() {
+            const prevIndex = currentSlide;
             currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            showSlide(currentSlide);
+            slides[prevIndex].classList.add('slide-right');
+            showSlide(currentSlide, 'left');
         }
 
         // Event listeners for buttons
@@ -188,8 +205,9 @@
         // Event listeners for indicators
         indicators.forEach((indicator, index) => {
             indicator.addEventListener('click', () => {
+                const wasGreater = index > currentSlide;
                 currentSlide = index;
-                showSlide(currentSlide);
+                showSlide(currentSlide, wasGreater ? 'right' : 'left');
             });
         });
 
