@@ -128,7 +128,7 @@
 
      h1 { font-size: var(--text-4xl); font-weight: var(--weight-extrabold); }
      h2 { font-size: var(--text-3xl); }
-     h3 { font-familiarsize: var(--text-2xl); }
+     h3 { font-size: var(--text-2xl); }
      h4 { font-size: var(--text-xl); font-weight: var(--weight-semibold); }
 
      p { 
@@ -177,7 +177,7 @@
      }
 
      .logo {
-     font-size: 2.2rem;
+     font-size: 1.9rem;
      color: #fd7702;
      font-weight: 400;
      font-family: 'Rye', cursive;
@@ -223,25 +223,27 @@
          ),
          url('https://images.unsplash.com/photo-1561489396-888724a1543d?w=1920&q=80') center/cover;
      background-attachment: fixed;
+     background-size: cover;
+     background-position: center center;
      min-height: 100vh;
      max-height: 100vh;
      display: flex;
      flex-direction: column;
      justify-content: center;
      align-items: center;
-     padding: 2rem 4%;
+     padding: 1.5rem 3%;
      position: relative;
      overflow: hidden;
      }
 
      /* Centered Hero Title */
      .hero-title {
-     font-size: 3.5rem;
-     margin-bottom: 2rem;
+     font-size: clamp(2rem, 4vw, 3rem);
+     margin-bottom: 1.5rem;
      color: #ffffff;
      font-family: 'Rye', cursive;
      font-weight: 400;
-     letter-spacing: 4px;
+     letter-spacing: 3px;
      text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.8),
                   0 0 30px rgba(253, 119, 2, 0.6);
      text-align: center;
@@ -252,8 +254,8 @@
      .hero-container {
      display: grid;
      grid-template-columns: 45% 55%;
-     gap: 3rem;
-     max-width: 1300px;
+     gap: clamp(1.5rem, 3vw, 3rem);
+     max-width: 1200px;
      width: 100%;
      align-items: center;
      }
@@ -262,13 +264,13 @@
      .hero-food-carousel {
      position: relative;
      width: 100%;
-     max-width: 400px;
-     height: 400px;
+     max-width: clamp(280px, 30vw, 380px);
+     height: clamp(280px, 30vw, 380px);
      display: flex;
      align-items: center;
      justify-content: center;
      margin: 0 auto;
-     padding-bottom: 50px;
+     padding-bottom: 40px;
      }
 
      .food-slider {
@@ -284,16 +286,23 @@
      width: 100%;
      height: 100%;
      opacity: 0;
-     transform: scale(0.9) rotateY(90deg);
-     transition: all 0.5s ease-in-out;
+     transform: translateX(100%);
+     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
      pointer-events: none;
      }
 
      .food-item.active {
      opacity: 1;
-     transform: scale(1) rotateY(0deg);
+     transform: translateX(0);
      pointer-events: all;
-     animation: subtlePulse 4s ease-in-out infinite;
+     }
+
+     .food-item.slide-left {
+     transform: translateX(-100%);
+     }
+
+     .food-item.slide-right {
+     transform: translateX(100%);
      }
 
      .food-image {
@@ -303,126 +312,126 @@
      filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.5));
      }
 
-     /* Subtle Pulse Animation */
-     @keyframes subtlePulse {
-     0%, 100% {
-         transform: scale(1) rotateY(0deg);
-     }
-     50% {
-         transform: scale(1.02) rotateY(0deg);
-     }
-     }
-
-     /* Carousel Controls */
+     /* Carousel Controls - Minimalist Apple Style */
      .carousel-btn {
      position: absolute;
      top: 50%;
      transform: translateY(-50%);
-     background: rgba(253, 119, 2, 0.9);
-     color: white;
-     border: none;
-     width: 50px;
-     height: 50px;
+     background: rgba(255, 255, 255, 0.15);
+     backdrop-filter: blur(10px);
+     color: rgba(255, 255, 255, 0.9);
+     border: 1px solid rgba(255, 255, 255, 0.2);
+     width: 36px;
+     height: 36px;
      border-radius: 50%;
-     font-size: 2rem;
+     font-size: 1.4rem;
      cursor: pointer;
-     transition: all 0.3s ease;
+     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
      z-index: 10;
      display: flex;
      align-items: center;
      justify-content: center;
-     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
      }
 
      .carousel-btn:hover {
-     background: rgba(206, 17, 38, 0.95);
-     transform: translateY(-50%) scale(1.1);
+     background: rgba(255, 255, 255, 0.25);
+     transform: translateY(-50%) scale(1.08);
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+     }
+
+     .carousel-btn:active {
+     transform: translateY(-50%) scale(0.95);
      }
 
      .carousel-btn.prev {
-     left: -25px;
+     left: -18px;
      }
 
      .carousel-btn.next {
-     right: -25px;
+     right: -18px;
      }
 
-     /* Carousel Indicators */
+     /* Carousel Indicators - Minimalist Apple Style */
      .carousel-indicators {
      position: absolute;
-     bottom: -40px;
+     bottom: -35px;
      left: 50%;
      transform: translateX(-50%);
      display: flex;
-     gap: 8px;
+     gap: 6px;
      z-index: 20;
+     padding: 4px 8px;
+     background: rgba(0, 0, 0, 0.1);
+     backdrop-filter: blur(8px);
+     border-radius: 12px;
      }
 
      .indicator {
-     width: 10px;
-     height: 10px;
+     width: 6px;
+     height: 6px;
      border-radius: 50%;
      background: rgba(255, 255, 255, 0.4);
-     border: 2px solid rgba(253, 119, 2, 0.6);
+     border: none;
      cursor: pointer;
-     transition: all 0.3s ease;
+     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
      }
 
      .indicator:hover {
-     background: rgba(253, 119, 2, 0.7);
-     transform: scale(1.2);
+     background: rgba(255, 255, 255, 0.6);
+     transform: scale(1.15);
      }
 
      .indicator.active {
-     background: #fd7702;
-     width: 24px;
-     border-radius: 5px;
-     border-color: #fd7702;
+     background: rgba(255, 255, 255, 0.95);
+     width: 20px;
+     border-radius: 3px;
      }
 
      /* Hero Content Section - Family History */
      .hero-content {
      position: relative;
      z-index: 2;
-     padding: 2rem 1.5rem;
+     padding: clamp(1rem, 2vw, 1.8rem) clamp(1rem, 2vw, 1.5rem);
      text-align: left;
-     background: rgba(0, 0, 0, 0.5);
-     border-radius: 15px;
+     background: rgba(0, 0, 0, 0.55);
+     border-radius: 12px;
      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-     backdrop-filter: blur(15px);
-     border: 1px solid rgba(255, 255, 255, 0.1);
+     backdrop-filter: blur(18px);
+     border: 1px solid rgba(255, 255, 255, 0.12);
+     max-width: 100%;
      }
 
      .family-subtitle {
-     font-size: 1.8rem;
-     margin-bottom: 1rem;
+     font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+     margin-bottom: clamp(0.6rem, 1.2vw, 0.9rem);
      color: #ffb84d;
      font-family: 'Rye', cursive;
      font-weight: 400;
-     letter-spacing: 2px;
+     letter-spacing: 1.5px;
      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8),
                   0 0 20px rgba(253, 119, 2, 0.5);
      }
 
      .hero-description {
-     font-size: 1rem;
-     margin-bottom: 0.8rem;
+     font-size: clamp(0.8rem, 1.1vw, 0.95rem);
+     margin-bottom: clamp(0.5rem, 1vw, 0.7rem);
      color: #f5f5f5;
-     line-height: 1.6;
+     line-height: 1.55;
      font-weight: var(--weight-medium);
      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
      }
 
      .hero-subtext {
-     font-size: 0.95rem;
+     font-size: clamp(0.75rem, 1vw, 0.85rem);
      margin-bottom: 0;
      color: #ffd580;
      font-weight: var(--weight-bold);
      font-style: italic;
      text-align: center;
-     padding-top: 0.8rem;
+     padding-top: clamp(0.5rem, 1vw, 0.7rem);
      border-top: 2px solid rgba(255, 184, 77, 0.4);
-     margin-top: 0.8rem;
+     margin-top: clamp(0.5rem, 1vw, 0.7rem);
      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
      }
 
@@ -792,56 +801,16 @@
      /* Navigation */
      .nav-container {
      justify-content: center;
-     gap: 3rem;
+     gap: 2.8rem;
      }
 
      .logo {
-     font-size: 2.2rem;
+     font-size: 1.9rem;
      }
 
      .nav-cta {
-     padding: 0.65rem 1.75rem;
-     font-size: 0.95rem;
-     }
-
-     /* Hero - Full Desktop Layout */
-     .hero {
-     min-height: 100vh;
-     max-height: 100vh;
-     padding: 2rem 4% 3rem;
-     }
-
-     .hero-title {
-     font-size: 3.5rem;
-     margin-bottom: 2rem;
-     letter-spacing: 4px;
-     }
-
-     .hero-container {
-     grid-template-columns: 45% 55%;
-     gap: 3rem;
-     }
-
-     .hero-food-carousel {
-     max-width: 400px;
-     height: 400px;
-     padding-bottom: 50px;
-     }
-
-     .carousel-indicators {
-     bottom: -40px;
-     }
-
-     .family-subtitle {
-     font-size: 1.8rem;
-     }
-
-     .hero-description {
-     font-size: 1rem;
-     }
-
-     .hero-subtext {
-     font-size: 0.95rem;
+     padding: 0.6rem 1.6rem;
+     font-size: 0.9rem;
      }
     
      /* Features */
