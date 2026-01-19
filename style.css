@@ -168,24 +168,26 @@
      .nav-container {
      max-width: 1400px;
      margin: 0 auto;
-     padding: 0 1rem;
+     padding: 0 2rem;
      display: flex;
      flex-direction: row;
-     justify-content: flex-start;
+     justify-content: center;
      align-items: center;
-     gap: 2rem;
+     gap: 3rem;
      }
 
      .logo {
-     font-size: 1.8rem;
+     font-size: 2.2rem;
      color: #fd7702;
-     font-weight: var(--weight-extrabold);
-     font-family: 'Poppins', sans-serif;
+     font-weight: 400;
+     font-family: 'Rye', cursive;
      margin: 0;
      white-space: nowrap;
+     letter-spacing: 2px;
+     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
      }
 
-     /* CTA Button in Nav - Close to Logo */
+     /* CTA Button in Nav */
      .nav-cta {
      display: inline-block;
      background: linear-gradient(90deg, #006847 0%, #FFFFFF 50%, #CE1126 100%);
@@ -309,11 +311,12 @@
      /* Carousel Indicators */
      .carousel-indicators {
      position: absolute;
-     bottom: -50px;
+     bottom: 20px;
      left: 50%;
      transform: translateX(-50%);
      display: flex;
      gap: 12px;
+     z-index: 20;
      }
 
      .indicator {
@@ -343,8 +346,11 @@
      font-size: 3.5rem;
      margin-bottom: 1.5rem;
      color: #1a1a1a;
-     line-height: 1.1;
-     font-weight: var(--weight-extrabold);
+     line-height: 1.2;
+     font-family: 'Rye', cursive;
+     font-weight: 400;
+     letter-spacing: 2px;
+     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
      }
 
      .hero-description {
@@ -528,12 +534,15 @@
      }
 
      .nav-container {
-     gap: 1rem;
-     justify-content: space-between;
+     gap: 1.5rem;
+     justify-content: center;
+     flex-wrap: wrap;
+     padding: 0 1rem;
      }
 
      .logo {
-     font-size: 1.3rem;
+     font-size: 1.5rem;
+     letter-spacing: 1px;
      }
 
      .nav-cta {
@@ -545,7 +554,7 @@
      .hero {
      grid-template-columns: 1fr;
      min-height: auto;
-     padding: 3rem 1.5rem;
+     padding: 3rem 1.5rem 4rem;
      gap: 2rem;
      }
 
@@ -553,6 +562,7 @@
      max-width: 400px;
      height: 400px;
      order: 1;
+     margin-bottom: 2rem;
      }
 
      .carousel-btn {
@@ -580,7 +590,8 @@
      }
 
      .hero-content h1 {
-     font-size: 2.2rem;
+     font-size: 2rem;
+     letter-spacing: 1px;
      }
 
      .hero-description {
@@ -604,10 +615,12 @@
      /* Navigation */
      .nav-container {
      padding: 0 2rem;
+     justify-content: center;
+     gap: 2.5rem;
      }
 
      .logo {
-     font-size: 1.6rem;
+     font-size: 1.8rem;
      }
 
      .nav-cta {
@@ -619,13 +632,17 @@
      .hero {
         grid-template-columns: 1fr 1fr;
         min-height: 75vh;
-        padding: 3rem 3%;
+        padding: 3rem 3% 5rem;
         gap: 2rem;
      }
 
      .hero-food-carousel {
         max-width: 450px;
         height: 450px;
+     }
+
+     .carousel-indicators {
+        bottom: 15px;
      }
 
      .hero-content h1 {
@@ -703,8 +720,13 @@
      @media (min-width: 1024px) {
 
      /* Navigation */
+     .nav-container {
+     justify-content: center;
+     gap: 3rem;
+     }
+
      .logo {
-     font-size: 1.8rem;
+     font-size: 2.2rem;
      }
 
      .nav-cta {
@@ -716,13 +738,17 @@
      .hero {
      grid-template-columns: 1fr 1fr;
      min-height: 90vh;
-     padding: 3rem 5%;
+     padding: 3rem 5% 5rem;
      gap: 4rem;
      }
 
      .hero-food-carousel {
      max-width: 600px;
      height: 600px;
+     }
+
+     .carousel-indicators {
+     bottom: 20px;
      }
 
      .hero-content h1 {
