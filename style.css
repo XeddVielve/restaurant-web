@@ -235,7 +235,8 @@
         - scroll = image moves when you scroll (normal)
         - fixed = image stays in place (parallax effect)
      */
-     background-attachment: scroll;
+     background-attachment:fixed;
+
 
      /* BACKGROUND SIZE:
         - cover = fills entire area (may crop image)
@@ -289,6 +290,7 @@
      justify-content: center;
      margin: 0 auto;
      padding-bottom: 40px;
+     margin-left: -5px;
      }
 
      .food-slider {
@@ -303,6 +305,7 @@
      left: 0;
      width: 100%;
      height: 100%;
+     
      opacity: 0;
      transition: opacity 0.5s ease-in-out;
      pointer-events: none;
