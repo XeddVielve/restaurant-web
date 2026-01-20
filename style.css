@@ -230,13 +230,13 @@
      background-position: 50% 50%;
      background-attachment: fixed;
      background-size: cover;
-     min-height: 50vh;
-     max-height: 50vh;
+     min-height: clamp(500px, 100vh, 100vh);
+     height: 100vh;
      display: flex;
      flex-direction: column;
-     justify-content: flex-start;
+     justify-content: center;
      align-items: center;
-     padding: 2rem 3%;
+     padding: clamp(1.5rem, 2vh, 3rem) clamp(1rem, 3vw, 4rem);
      position: relative;
      overflow: hidden;
      }
@@ -244,11 +244,11 @@
      /* Centered Hero Title */
      .hero-title {
      font-size: clamp(2rem, 4vw, 3rem);
-     margin-bottom: 1.5rem;
+     margin-bottom: clamp(1.2rem, 2vh, 1.8rem);
      color: #e8ad30;
      font-family: 'Rye', cursive;
      font-weight: 300;
-     letter-spacing: 3px;
+     letter-spacing: clamp(2px, 0.3vw, 3px);
      text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.8),
                   0 0 30px rgba(253, 119, 2, 0.6);
      text-align: center;
@@ -258,24 +258,28 @@
      /* Container for Family Photo + History */
      .hero-container {
      display: grid;
-     grid-template-columns: 1fr 1fr;
-     gap: clamp(1.5rem, 3vw, 3rem);
-     max-width: 1100px;
+     grid-template-columns: minmax(280px, 40%) minmax(300px, 50%);
+     gap: clamp(1.5rem, 2.5vw, 2.5rem);
+     max-width: min(1200px, 90vw);
      width: 100%;
-     align-items: center;
-     justify-items: center;
+     align-items: stretch;
+     justify-content: center;
      }
 
      /* Family Photo Section */
      .hero-family-photo {
      width: 100%;
      max-width: clamp(280px, 35vw, 400px);
+     height: 100%;
      background: rgba(0, 0, 0, 0.55);
-     border-radius: 12px;
+     border-radius: clamp(10px, 1vw, 14px);
      overflow: hidden;
      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
      backdrop-filter: blur(8px);
      border: 1px solid rgba(255, 255, 255, 0.12);
+     display: flex;
+     flex-direction: column;
+     justify-self: center;
      }
 
      .family-image {
@@ -302,14 +306,18 @@
      .hero-content {
      position: relative;
      z-index: 2;
-     padding: clamp(1rem, 2vw, 1.8rem) clamp(1rem, 2vw, 1.5rem);
+     padding: clamp(1rem, 1.8vw, 1.6rem) clamp(1rem, 1.8vw, 1.4rem);
      text-align: left;
      background: rgba(0, 0, 0, 0.55);
-     border-radius: 12px;
+     border-radius: clamp(10px, 1vw, 14px);
      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
      backdrop-filter: blur(18px);
      border: 1px solid rgba(255, 255, 255, 0.12);
      max-width: 100%;
+     height: 100%;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
      }
 
      .family-subtitle {
@@ -368,84 +376,216 @@
 
      /*PART 8: LOCATION SECTION (MOBILE-FIRST)*/
 
+     /*PART 8: LOCATION SECTION (MOBILE-FIRST)*/
      .location-section {
-     padding: 3rem 1rem;
-     background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 100%);
+     padding: clamp(2rem, 4vw, 4rem) clamp(1rem, 3vw, 3rem);
+     background: linear-gradient(180deg, #1a1a1a 0%, #2a2a2a 50%, #1f1f1f 100%);
      text-align: center;
      }
 
      .location-title {
-     font-size: 1.8rem;
-     margin-bottom: 2rem;
+     font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+     margin-bottom: clamp(1.5rem, 3vw, 2rem);
      color: #e8ad30;
      font-family: 'Rye', cursive;
      font-weight: 400;
      letter-spacing: 2px;
-     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
      }
 
+     /* Location Selector Tabs */
+     .location-selector {
+     display: flex;
+     justify-content: center;
+     gap: clamp(0.8rem, 2vw, 1.5rem);
+     margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+     flex-wrap: wrap;
+     }
+
+     .location-btn {
+     padding: clamp(0.6rem, 1.2vw, 0.9rem) clamp(1.2rem, 2.5vw, 2rem);
+     background: rgba(255, 255, 255, 0.1);
+     color: #ffffff;
+     border: 2px solid rgba(232, 173, 48, 0.3);
+     border-radius: 50px;
+     font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+     font-weight: 600;
+     cursor: pointer;
+     transition: all 0.3s ease;
+     backdrop-filter: blur(10px);
+     white-space: nowrap;
+     }
+
+     .location-btn:hover {
+     background: rgba(232, 173, 48, 0.2);
+     border-color: rgba(232, 173, 48, 0.6);
+     transform: translateY(-2px);
+     box-shadow: 0 4px 12px rgba(232, 173, 48, 0.3);
+     }
+
+     .location-btn.active {
+     background: linear-gradient(90deg, #006847 0%, #FFFFFF 50%, #CE1126 100%);
+     color: #000000;
+     border-color: #e8ad30;
+     box-shadow: 0 4px 16px rgba(232, 173, 48, 0.4);
+     }
+
+     /* Location Container - Grid Layout */
      .location-container {
-     max-width: 1100px;
+     display: grid;
+     grid-template-columns: 1fr;
+     gap: clamp(2rem, 4vw, 3rem);
+     max-width: 1400px;
      margin: 0 auto;
-     display: flex;
-     flex-direction: column;
-     gap: 2rem;
-     align-items: center;
      }
 
-     .location-map {
-     width: 100%;
-     max-width: 500px;
-     height: 320px;
-     border-radius: 12px;
+     /* Location Info Wrapper */
+     .location-info-wrapper {
+     position: relative;
+     min-height: clamp(320px, 40vw, 450px);
      overflow: hidden;
-     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
      }
 
-     .location-map iframe {
-     display: block;
+     .location-card {
+     position: absolute;
+     top: 0;
+     left: 0;
      width: 100%;
-     height: 100%;
-     }
-
-     .location-photo {
-     width: 100%;
-     max-width: 500px;
-     height: 320px;
-     background: rgba(0, 0, 0, 0.4);
-     border-radius: 12px;
+     opacity: 0;
+     transform: translateX(100%);
+     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+     pointer-events: none;
+     background: rgba(255, 255, 255, 0.05);
+     border: 1px solid rgba(232, 173, 48, 0.2);
+     border-radius: clamp(12px, 1.5vw, 20px);
      overflow: hidden;
-     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-     display: flex;
-     flex-direction: column;
+     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+     backdrop-filter: blur(20px);
      }
 
-     .local-image {
+     .location-card.active {
+     position: relative;
+     opacity: 1;
+     transform: translateX(0);
+     pointer-events: all;
+     }
+
+     .location-card.slide-out {
+     transform: translateX(-100%);
+     opacity: 0;
+     }
+
+     .location-card.slide-in {
+     transform: translateX(0);
+     opacity: 1;
+     }
+
+     .location-image {
      width: 100%;
-     flex: 1;
+     height: clamp(180px, 22vw, 260px);
      object-fit: cover;
      display: block;
      }
 
-     .location-info {
-     padding: 1.2rem;
+     .location-details {
+     padding: clamp(1.2rem, 2.5vw, 2rem);
      text-align: left;
      }
 
-     .location-info h3 {
-     font-size: 1.3rem;
+     .location-details h3 {
+     font-size: clamp(1.2rem, 2vw, 1.6rem);
      color: #ffb84d;
      font-family: 'Rye', cursive;
      font-weight: 400;
-     margin-bottom: 0.8rem;
+     margin-bottom: clamp(0.8rem, 1.5vw, 1.2rem);
      letter-spacing: 1px;
      }
 
-     .location-info p {
+     .location-item {
+     display: flex;
+     align-items: flex-start;
+     gap: clamp(0.7rem, 1.2vw, 1rem);
+     margin-bottom: clamp(0.6rem, 1.2vw, 0.9rem);
      color: #f5f5f5;
-     font-size: 0.95rem;
-     margin-bottom: 0.5rem;
-     line-height: 1.5;
+     font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+     line-height: 1.6;
+     }
+
+     .location-icon {
+     font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+     flex-shrink: 0;
+     }
+
+     /* Map Wrapper */
+     .map-wrapper {
+     width: 100%;
+     }
+
+     .map-heading {
+     font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+     color: #ffb84d;
+     margin-bottom: clamp(1rem, 2vw, 1.5rem);
+     font-family: 'Rye', cursive;
+     letter-spacing: 1px;
+     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+     }
+
+     /* Map Container */
+     .map-container {
+     position: relative;
+     width: 100%;
+     height: clamp(300px, 40vw, 480px);
+     border-radius: clamp(12px, 1.5vw, 20px);
+     overflow: hidden;
+     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+     border: 2px solid rgba(232, 173, 48, 0.3);
+     }
+
+     .location-map {
+     width: 100%;
+     height: 100%;
+     transition: opacity 0.3s ease;
+     }
+
+     /* Map Zoom Controls */
+     .map-controls {
+     position: absolute;
+     top: clamp(12px, 1.5vw, 20px);
+     right: clamp(12px, 1.5vw, 20px);
+     z-index: 10;
+     display: flex;
+     flex-direction: column;
+     gap: clamp(6px, 0.8vw, 10px);
+     }
+
+     .map-zoom-btn {
+     width: clamp(35px, 4vw, 45px);
+     height: clamp(35px, 4vw, 45px);
+     background: rgba(255, 255, 255, 0.95);
+     color: #1a1a1a;
+     border: 2px solid rgba(232, 173, 48, 0.6);
+     border-radius: 8px;
+     font-size: clamp(1.3rem, 2vw, 1.8rem);
+     font-weight: bold;
+     cursor: pointer;
+     transition: all 0.2s ease;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+     line-height: 1;
+     padding: 0;
+     }
+
+     .map-zoom-btn:hover {
+     background: #e8ad30;
+     color: white;
+     transform: scale(1.1);
+     box-shadow: 0 4px 12px rgba(232, 173, 48, 0.5);
+     }
+
+     .map-zoom-btn:active {
+     transform: scale(0.95);
      }
 
      /*PART 9: MENU PREVIEW (MOBILE-FIRST)*/
@@ -656,7 +796,7 @@
     
      /* Location Section - Tablet (side by side) */
      .location-section {
-     padding: 4rem 2rem;
+     padding: 3rem 2rem;
      }
 
      .location-title {
@@ -664,27 +804,16 @@
      }
 
      .location-container {
-     flex-direction: row;
-     justify-content: center;
+     grid-template-columns: 1fr 1fr;
      gap: 2.5rem;
      }
 
-     .location-map {
-     max-width: 450px;
-     height: 350px;
+     .location-info-wrapper {
+     min-height: 400px;
      }
 
-     .location-photo {
-     max-width: 450px;
-     height: 350px;
-     }
-
-     .location-info h3 {
-     font-size: 1.4rem;
-     }
-
-     .location-info p {
-     font-size: 1rem;
+     .map-container {
+     height: 420px;
      }
 
      /* Menu */
@@ -728,38 +857,24 @@
     
      /* Location Section - Desktop */
      .location-section {
-     padding: 5rem 2rem;
+     padding: 4rem 2rem;
      }
 
      .location-title {
      font-size: 2.5rem;
-     margin-bottom: 2.5rem;
      }
 
      .location-container {
+     grid-template-columns: 45% 55%;
      gap: 3rem;
      }
 
-     .location-map {
-     max-width: 480px;
-     height: 380px;
+     .location-info-wrapper {
+     min-height: 450px;
      }
 
-     .location-photo {
-     max-width: 480px;
-     height: 380px;
-     }
-
-     .location-info {
-     padding: 1.5rem;
-     }
-
-     .location-info h3 {
-     font-size: 1.5rem;
-     }
-
-     .location-info p {
-     font-size: 1.05rem;
+     .map-container {
+     height: 500px;
      }
 
      /* Menu */

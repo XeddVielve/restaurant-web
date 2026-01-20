@@ -49,28 +49,84 @@
 
     <!-- Location Section -->
     <section id="about" class="location-section">
-        <h2 class="location-title">Donde nos ubicamos:</h2>
+        <h2 class="location-title">Visítanos</h2>
+
+        <!-- Location Selector -->
+        <div class="location-selector">
+            <button class="location-btn active" data-location="0">
+                📍 Insurgentes
+            </button>
+            <button class="location-btn" data-location="1">
+                📍 Polanco
+            </button>
+        </div>
+
         <div class="location-container">
-            <!-- Google Maps Embed -->
-            <div class="location-map">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1881.5!2d-99.1731!3d19.3880!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDIzJzE2LjgiTiA5OcKwMTAnMjMuMiJX!5e0!3m2!1ses!2smx!4v1705700000000!5m2!1ses!2smx"
-                    width="100%"
-                    height="100%"
-                    style="border:0; border-radius: 12px;"
-                    allowfullscreen=""
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+            <!-- Location Info Cards Wrapper -->
+            <div class="location-info-wrapper">
+                <!-- Location 1: Insurgentes -->
+                <div class="location-card active" data-location-id="0">
+                    <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=600&h=400&fit=crop&auto=format&q=85" alt="Tacos El Arquitecto - Insurgentes" class="location-image">
+                    <div class="location-details">
+                        <h3>Tacos El Arquitecto - Insurgentes</h3>
+                        <p class="location-item">
+                            <span class="location-icon">📍</span>
+                            <span>Av. Insurgentes Sur 1234, CDMX</span>
+                        </p>
+                        <p class="location-item">
+                            <span class="location-icon">📞</span>
+                            <span>55-1234-5678</span>
+                        </p>
+                        <p class="location-item">
+                            <span class="location-icon">⏰</span>
+                            <span>Lun-Dom: 10:00 AM - 10:00 PM</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Location 2: Polanco -->
+                <div class="location-card" data-location-id="1">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop&auto=format&q=85" alt="Tacos El Arquitecto - Polanco" class="location-image">
+                    <div class="location-details">
+                        <h3>Tacos El Arquitecto - Polanco</h3>
+                        <p class="location-item">
+                            <span class="location-icon">📍</span>
+                            <span>Av. Presidente Masaryk 520, Polanco, CDMX</span>
+                        </p>
+                        <p class="location-item">
+                            <span class="location-icon">📞</span>
+                            <span>55-8765-4321</span>
+                        </p>
+                        <p class="location-item">
+                            <span class="location-icon">⏰</span>
+                            <span>Lun-Dom: 11:00 AM - 11:00 PM</span>
+                        </p>
+                    </div>
+                </div>
             </div>
-            <!-- Local Photo -->
-            <div class="location-photo">
-                <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=600&h=400&fit=crop&auto=format&q=85" alt="Tacos El Arquitecto Local" class="local-image">
-                <div class="location-info">
-                    <h3>Visítanos</h3>
-                    <p>📍 Av. Insurgentes Sur 1234, CDMX</p>
-                    <p>📞 55-1234-5678</p>
-                    <p>⏰ Lun-Dom: 10:00 AM - 10:00 PM</p>
+
+            <!-- Map Container with Zoom Controls -->
+            <div class="map-wrapper">
+                <h3 class="map-heading">Dónde Nos Ubicamos</h3>
+                <div class="map-container">
+                    <!-- Map Zoom Controls -->
+                    <div class="map-controls">
+                        <button class="map-zoom-btn" id="zoomIn" aria-label="Zoom In">+</button>
+                        <button class="map-zoom-btn" id="zoomOut" aria-label="Zoom Out">−</button>
+                    </div>
+
+                    <!-- Google Maps Iframe -->
+                    <iframe
+                        id="locationMap"
+                        class="location-map"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1881.5!2d-99.1731!3d19.3880!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDIzJzE2LjgiTiA5OcKwMTAnMjMuMiJX!5e0!3m2!1ses!2smx!4v1705700000000!5m2!1ses!2smx"
+                        width="100%"
+                        height="100%"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
             </div>
         </div>
@@ -109,5 +165,100 @@
         <p>Sitio creado por Edgar Herrera - Web Developer</p>
     </footer>
 
+    <!-- JavaScript for Location Switcher and Map Controls -->
+    <script>
+        // Location Switcher with Slide Animation
+        const locationBtns = document.querySelectorAll('.location-btn');
+        const locationCards = document.querySelectorAll('.location-card');
+        const locationMap = document.getElementById('locationMap');
+
+        // Map URLs for each location
+        const mapUrls = [
+            // Insurgentes location
+            'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1881.5!2d-99.1731!3d19.3880!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDIzJzE2LjgiTiA5OcKwMTAnMjMuMiJX!5e0!3m2!1ses!2smx!4v1705700000000!5m2!1ses!2smx',
+            // Polanco location
+            'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.3!2d-99.1944!3d19.4326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f8b0e5e0e0e0%3A0x0!2sAv.%20Presidente%20Masaryk%20520%2C%20Polanco%2C%20CDMX!5e0!3m2!1ses!2smx!4v1705700000001!5m2!1ses!2smx'
+        ];
+
+        let currentZoom = 13;
+
+        function switchLocation(locationIndex) {
+            // Update button states
+            locationBtns.forEach((btn, index) => {
+                btn.classList.toggle('active', index === locationIndex);
+            });
+
+            // Slide out current location card
+            const currentCard = document.querySelector('.location-card.active');
+            if (currentCard) {
+                currentCard.classList.add('slide-out');
+                setTimeout(() => {
+                    currentCard.classList.remove('active', 'slide-out');
+                }, 350);
+            }
+
+            // Slide in new location card
+            setTimeout(() => {
+                const newCard = locationCards[locationIndex];
+                newCard.classList.add('active', 'slide-in');
+                setTimeout(() => {
+                    newCard.classList.remove('slide-in');
+                }, 350);
+            }, 350);
+
+            // Update map with fade animation
+            locationMap.style.opacity = '0';
+            setTimeout(() => {
+                locationMap.src = mapUrls[locationIndex];
+                setTimeout(() => {
+                    locationMap.style.opacity = '1';
+                }, 100);
+            }, 300);
+        }
+
+        // Add click handlers to location buttons
+        locationBtns.forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                if (!btn.classList.contains('active')) {
+                    switchLocation(index);
+                }
+            });
+        });
+
+        // Map Zoom Controls
+        const zoomInBtn = document.getElementById('zoomIn');
+        const zoomOutBtn = document.getElementById('zoomOut');
+
+        zoomInBtn.addEventListener('click', () => {
+            if (currentZoom < 21) {
+                currentZoom++;
+                updateMapZoom();
+            }
+        });
+
+        zoomOutBtn.addEventListener('click', () => {
+            if (currentZoom > 1) {
+                currentZoom--;
+                updateMapZoom();
+            }
+        });
+
+        function updateMapZoom() {
+            const activeLocationIndex = Array.from(locationBtns).findIndex(btn => btn.classList.contains('active'));
+            let currentUrl = mapUrls[activeLocationIndex];
+
+            // Replace zoom level in URL (4f13.1 -> 4f[newZoom].1)
+            const newUrl = currentUrl.replace(/4f\d+\.1/, `4f${currentZoom}.1`);
+            mapUrls[activeLocationIndex] = newUrl;
+
+            locationMap.style.opacity = '0';
+            setTimeout(() => {
+                locationMap.src = newUrl;
+                setTimeout(() => {
+                    locationMap.style.opacity = '1';
+                }, 100);
+            }, 150);
+        }
+    </script>
 </body>
 </html>
