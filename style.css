@@ -209,7 +209,7 @@
      background: linear-gradient(90deg, #CE1126 0%, #FFFFFF 50%, #006847 100%);
      }
     
-     /*PART 7: HERO SECTION (FOOD SHOWCASE)*/
+     /*PART 7: HERO SECTION (FAMILY SHOWCASE)*/
      .hero {
      background:
          linear-gradient(135deg,
@@ -221,36 +221,22 @@
              rgba(211, 47, 47, 0.7) 80%,
              rgba(206, 17, 38, 0.75) 100%
          ),
-         url('../Downloads/julieta-julieta-bwwOu1GOXnk-unsplash.jpg');
+         url('https://images.unsplash.com/photo-1613514785940-daed07799d9b?w=1920&h=1080&fit=crop&auto=format&q=85');
 
      /* BACKGROUND POSITIONING GUIDE:
         - First value (50%) = Horizontal position (0% = left, 50% = center, 100% = right)
-        - Second value (10%) = Vertical position (0% = top, 50% = center, 100% = bottom)
-        - You can also use: top, center, bottom, left, right
-        - Examples: "center top", "left center", "80% 20%"
+        - Second value (50%) = Vertical position (0% = top, 50% = center, 100% = bottom)
      */
-     background-position: 50% 10%;
-
-     /* BACKGROUND ATTACHMENT:
-        - scroll = image moves when you scroll (normal)
-        - fixed = image stays in place (parallax effect)
-     */
-     background-attachment:fixed;
-
-
-     /* BACKGROUND SIZE:
-        - cover = fills entire area (may crop image)
-        - contain = fits whole image (may show empty space)
-        - 100% 100% = stretches to fill
-     */
+     background-position: 50% 50%;
+     background-attachment: fixed;
      background-size: cover;
      min-height: 50vh;
      max-height: 50vh;
      display: flex;
      flex-direction: column;
-     justify-content: center;
+     justify-content: flex-start;
      align-items: center;
-     padding: 1.5rem 3%;
+     padding: 2rem 3%;
      position: relative;
      overflow: hidden;
      }
@@ -258,7 +244,7 @@
      /* Centered Hero Title */
      .hero-title {
      font-size: clamp(2rem, 4vw, 3rem);
-     margin-bottom: 10rem; 
+     margin-bottom: 1.5rem;
      color: #e8ad30;
      font-family: 'Rye', cursive;
      font-weight: 300;
@@ -269,130 +255,47 @@
      width: 100%;
      }
 
-     /* Container for Carousel + Family History */
+     /* Container for Family Photo + History */
      .hero-container {
      display: grid;
-     grid-template-columns: 45% 55%;
+     grid-template-columns: 1fr 1fr;
      gap: clamp(1.5rem, 3vw, 3rem);
-     max-width: 1200px;
+     max-width: 1100px;
      width: 100%;
      align-items: center;
+     justify-items: center;
      }
 
-     /* Food Carousel Section */
-     .hero-food-carousel {
-     position: relative;
+     /* Family Photo Section */
+     .hero-family-photo {
      width: 100%;
-     max-width: clamp(280px, 30vw, 380px);
-     height: clamp(280px, 30vw, 380px);
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     margin: 0 auto;
-     padding-bottom: 40px;
-     margin-left: -5px;
-     }
-
-     .food-slider {
-     position: relative;
-     width: 100%;
-     height: 100%;
-     }
-
-     .food-item {
-     position: absolute;
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 100%;
-     
-     opacity: 0;
-     transition: opacity 0.5s ease-in-out;
-     pointer-events: none;
-     }
-
-     .food-item.active {
-     opacity: 1;
-     pointer-events: all;
-     }
-
-     .food-image {
-     width: 100%;
-     height: 100%;
-     object-fit: contain;
-     filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.5));
-     }
-
-     /* Carousel Controls - Clean Arrows */
-     .carousel-btn {
-     position: absolute;
-     top: 50%;
-     transform: translateY(-50%);
-     background: transparent;
-     color: rgba(255, 255, 255, 0.8);
-     border: none;
-     font-size: 3rem;
-     cursor: pointer;
-     transition: all 0.3s ease;
-     z-index: 10;
-     padding: 0;
-     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-     font-weight: 100;
-     line-height: 1;
-     }
-
-     .carousel-btn:hover {
-     color: rgba(255, 255, 255, 1);
-     transform: translateY(-50%) scale(1.2);
-     text-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
-     }
-
-     .carousel-btn:active {
-     transform: translateY(-50%) scale(1.1);
-     }
-
-     .carousel-btn.prev {
-     left: -25px;
-     }
-
-     .carousel-btn.next {
-     right: -25px;
-     }
-
-     /* Carousel Indicators - Minimalist Apple Style */
-     .carousel-indicators {
-     position: absolute;
-     bottom: -35px;
-     left: 50%;
-     transform: translateX(-50%);
-     display: flex;
-     gap: 6px;
-     z-index: 20;
-     padding: 4px 8px;
-     background: rgba(0, 0, 0, 0.1);
-     backdrop-filter: blur(8px);
+     max-width: clamp(280px, 35vw, 400px);
+     background: rgba(0, 0, 0, 0.55);
      border-radius: 12px;
+     overflow: hidden;
+     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+     backdrop-filter: blur(8px);
+     border: 1px solid rgba(255, 255, 255, 0.12);
      }
 
-     .indicator {
-     width: 6px;
-     height: 6px;
-     border-radius: 50%;
-     background: rgba(255, 255, 255, 0.4);
-     border: none;
-     cursor: pointer;
-     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+     .family-image {
+     width: 100%;
+     height: clamp(200px, 22vw, 280px);
+     object-fit: cover;
+     display: block;
+     filter: sepia(20%) contrast(1.05);
      }
 
-     .indicator:hover {
-     background: rgba(255, 255, 255, 0.6);
-     transform: scale(1.15);
-     }
-
-     .indicator.active {
-     background: rgba(255, 255, 255, 0.95);
-     width: 20px;
-     border-radius: 3px;
+     .photo-caption {
+     padding: 0.8rem 1rem;
+     color: #ffd580;
+     font-size: clamp(0.75rem, 1vw, 0.9rem);
+     font-style: italic;
+     text-align: center;
+     margin: 0;
+     font-weight: 500;
+     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+     border-top: 1px solid rgba(255, 184, 77, 0.3);
      }
 
      /* Hero Content Section - Family History */
@@ -463,52 +366,88 @@
      background: linear-gradient(90deg, #CE1126 0%, #FFFFFF 50%, #006847 100%);
      }
 
-     /*PART 8: FEATURES SECTION (MOBILE-FIRST)*/
+     /*PART 8: LOCATION SECTION (MOBILE-FIRST)*/
 
-     .features { 
-     padding: 2rem 1rem;  /* MOBILE: Less padding */
-     background: #f4f4f4; 
-     text-align: center; 
+     .location-section {
+     padding: 3rem 1rem;
+     background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 100%);
+     text-align: center;
      }
 
-     .features h2 { 
-     font-size: 1.75rem;  /* MOBILE: Smaller */
-     margin-bottom: 2rem; 
-     color: #1a1a1a; 
+     .location-title {
+     font-size: 1.8rem;
+     margin-bottom: 2rem;
+     color: #e8ad30;
+     font-family: 'Rye', cursive;
+     font-weight: 400;
+     letter-spacing: 2px;
+     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
      }
 
-     .features-container { 
-     max-width: 1200px; 
-     margin: 0 auto; 
-     display: flex; 
-     flex-direction: column;  /* MOBILE: Stack */
-     gap: 1.5rem; 
+     .location-container {
+     max-width: 1100px;
+     margin: 0 auto;
+     display: flex;
+     flex-direction: column;
+     gap: 2rem;
+     align-items: center;
      }
 
-     .feature-card {
-     width: 100%;  /* MOBILE: Full width */
-     background: white;
-     padding: 1.5rem;
-     border-radius: 15px;
-     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-     transition: transform 0.3s;
-     animation: fadeIn 0.6s ease-out backwards;
+     .location-map {
+     width: 100%;
+     max-width: 500px;
+     height: 320px;
+     border-radius: 12px;
+     overflow: hidden;
+     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
      }
 
-     .feature-card:hover { 
-     transform: translateY(-10px);
+     .location-map iframe {
+     display: block;
+     width: 100%;
+     height: 100%;
      }
 
-     .feature-card h3 { 
-     font-size: 1.3rem;  /* MOBILE: Smaller */
-     margin-bottom: 1rem; 
-     color: #ff6b35; 
+     .location-photo {
+     width: 100%;
+     max-width: 500px;
+     height: 320px;
+     background: rgba(0, 0, 0, 0.4);
+     border-radius: 12px;
+     overflow: hidden;
+     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+     display: flex;
+     flex-direction: column;
      }
 
-     .feature-card:nth-child(1) { animation-delay: 0.2s; }
-     .feature-card:nth-child(2) { animation-delay: 0.4s; }
-     .feature-card:nth-child(3) { animation-delay: 0.6s; }
-     
+     .local-image {
+     width: 100%;
+     flex: 1;
+     object-fit: cover;
+     display: block;
+     }
+
+     .location-info {
+     padding: 1.2rem;
+     text-align: left;
+     }
+
+     .location-info h3 {
+     font-size: 1.3rem;
+     color: #ffb84d;
+     font-family: 'Rye', cursive;
+     font-weight: 400;
+     margin-bottom: 0.8rem;
+     letter-spacing: 1px;
+     }
+
+     .location-info p {
+     color: #f5f5f5;
+     font-size: 0.95rem;
+     margin-bottom: 0.5rem;
+     line-height: 1.5;
+     }
+
      /*PART 9: MENU PREVIEW (MOBILE-FIRST)*/
      .menu { 
      padding: 2rem 1rem;  /* MOBILE: Less padding */
@@ -560,25 +499,6 @@
      }
 
      .menu-item:hover .price { color: white; }
-
-     /* Contact & Footer */
-
-     .contact { 
-     padding: 2rem 1rem;  /* MOBILE: Less padding */
-     background: linear-gradient(135deg, #1a1a1a 0%, #333 100%); 
-     color: white; 
-     text-align: center; 
-     }
-
-     .contact h2 { 
-     font-size: 1.75rem;  /* MOBILE: Smaller */
-     margin-bottom: 2rem; 
-     }
-
-     .contact-info p { 
-     font-size: 1.1rem;  /* MOBILE: Smaller */
-     margin: 1rem 0; 
-     }
 
      /*PART 11: FOOTER (MOBILE-FIRST) */
      footer { 
@@ -632,39 +552,18 @@
      gap: 2rem;
      }
 
-     .hero-food-carousel {
-     max-width: 300px;
-     height: 300px;
-     padding-bottom: 35px;
+     .hero-family-photo {
+     max-width: 280px;
      order: 1;
      }
 
-     .carousel-btn {
-     width: 35px;
-     height: 35px;
-     font-size: 1.3rem;
+     .family-image {
+     height: 180px;
      }
 
-     .carousel-btn.prev {
-     left: -15px;
-     }
-
-     .carousel-btn.next {
-     right: -15px;
-     }
-
-     .carousel-indicators {
-     bottom: -25px;
-     gap: 6px;
-     }
-
-     .indicator {
-     width: 8px;
-     height: 8px;
-     }
-
-     .indicator.active {
-     width: 20px;
+     .photo-caption {
+     font-size: 0.75rem;
+     padding: 0.6rem 0.8rem;
      }
 
      .hero-content {
@@ -724,20 +623,18 @@
      }
 
      .hero-container {
-        grid-template-columns: 45% 55%;
+        grid-template-columns: 1fr 1fr;
         gap: 2.5rem;
         justify-items: center;
         align-items: center;
      }
 
-     .hero-food-carousel {
-        max-width: 350px;
-        height: 350px;
-        padding-bottom: 40px;
+     .hero-family-photo {
+        max-width: 380px;
      }
 
-     .carousel-indicators {
-        bottom: -30px;
+     .family-image {
+        height: 260px;
      }
 
      .hero-content {
@@ -757,26 +654,39 @@
         font-size: 0.85rem;
      }
     
-     /* Features */
-     .features {
-     padding: 3rem 2rem;
+     /* Location Section - Tablet (side by side) */
+     .location-section {
+     padding: 4rem 2rem;
      }
-    
-     .features h2 {
-     font-size: 2.25rem;
+
+     .location-title {
+     font-size: 2.2rem;
      }
-    
-     .features-container {
+
+     .location-container {
      flex-direction: row;
-     flex-wrap: wrap;
-     gap: 2rem;
+     justify-content: center;
+     gap: 2.5rem;
      }
-    
-     .feature-card {
-     width: calc(50% - 1rem);  /* 2 columns */
-     max-width: 350px;
+
+     .location-map {
+     max-width: 450px;
+     height: 350px;
      }
-    
+
+     .location-photo {
+     max-width: 450px;
+     height: 350px;
+     }
+
+     .location-info h3 {
+     font-size: 1.4rem;
+     }
+
+     .location-info p {
+     font-size: 1rem;
+     }
+
      /* Menu */
      .menu {
      padding: 3rem 2rem;
@@ -793,21 +703,8 @@
      }
     
      .menu-item {
-    width: calc(50% - 1rem);  /* 2 columns */ 
+    width: calc(50% - 1rem);  /* 2 columns */
      max-width: 280px;
-     }
-    
-     /* Contact */
-     .contact {
-     padding: 3rem 2rem;
-     }
-    
-     .contact h2 {
-     font-size: 2.25rem;
-     }
-    
-     .contact-info p {
-        font-size: 1.2rem;
      }
      }
 
@@ -829,63 +726,68 @@
      font-size: 0.9rem;
      }
     
-     /* Features */
-     .features {
-     padding: 4rem 2rem;
+     /* Location Section - Desktop */
+     .location-section {
+     padding: 5rem 2rem;
      }
-     
-     .features h2 {
-        font-size: 2.5rem;
+
+     .location-title {
+     font-size: 2.5rem;
+     margin-bottom: 2.5rem;
      }
-    
-     .features-container {
-        gap: 2rem;
+
+     .location-container {
+     gap: 3rem;
      }
-    
-     .feature-card {
-     width: calc(33.333% - 1.5rem);  /* 3 columns */
-     min-width: 250px;
+
+     .location-map {
+     max-width: 480px;
+     height: 380px;
      }
-    
+
+     .location-photo {
+     max-width: 480px;
+     height: 380px;
+     }
+
+     .location-info {
+     padding: 1.5rem;
+     }
+
+     .location-info h3 {
+     font-size: 1.5rem;
+     }
+
+     .location-info p {
+     font-size: 1.05rem;
+     }
+
      /* Menu */
      .menu {
      padding: 4rem 2rem;
      }
-    
+
      .menu h2 {
      font-size: 2.5rem;
      }
-    
+
      .menu-container {
      gap: 2rem;
      }
-    
+
      .menu-item {
-     width: calc(33.333% - 1.5rem);  /* 3 columns */ 
+     width: calc(33.333% - 1.5rem);  /* 3 columns */
      min-width: 250px;
      }
-    
+
      .menu-item h3 {
         font-size: 1.3rem;
      }
-    
+
      .price {
         font-size: 1.5rem;
      }
-    
-     /* Contact */
-     .contact {
-     padding: 4rem 2rem;
-     }
-    
-     .contact h2 {
-     font-size: 2.5rem;
-     }
-    
-     .contact-info p {
-     font-size: 1.3rem;
-     }
-    
+
      /* Footer */
      footer {
      padding: 2rem;
